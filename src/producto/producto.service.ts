@@ -1,41 +1,20 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Producto } from './producto.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import { Tienda } from '../tienda/tienda.entity';
 
-@Injectable()
-export class ProductoService {
-  constructor(
-    @InjectRepository(Producto)
-    private productoRepository: Repository<Producto>,
-  ) {}
+@Entity()
+export class Producto {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  async findAll(): Promise<Producto[]> {
-    return this.productoRepository.find();
-  }
+  @Column()
+  nombre: string;
 
-  async findOne(id: number): Promise<Producto> {
-    return this.productoRepository.findOneOrFail({ where: { id } });
-  }
+  @Column('decimal', { precision: 10, scale: 2 })
+  precio: number;
 
-  async create(producto: Producto): Promise<Producto> {
-    this.validateProductType(producto.tipo);
-    return this.productoRepository.save(producto);
-  }
+  @Column()
+  tipo: string;
 
-  async update(id: number, producto: Producto): Promise<Producto> {
-    this.validateProductType(producto.tipo);
-    await this.productoRepository.update(id, producto);
-    return this.findOne(id);
-  }
-
-  async delete(id: number): Promise<void> {
-    await this.productoRepository.delete(id);
-  }
-
-  private validateProductType(tipo: string): void {
-    if (tipo !== 'Perecedero' && tipo !== 'No perecedero') {
-      throw new BadRequestException('Tipo de producto inválido');
-    }
-  }
+  @ManyToMany(() => Tienda, tienda => tienda.productos)
+  tiendas: Tienda[];
 }
