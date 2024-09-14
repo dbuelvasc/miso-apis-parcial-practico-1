@@ -41,6 +41,7 @@ $npm install sqlite3 --save
 ## Compile and run the project
 
 ```bash
+# Instalación de dependencias
 $ npm install
 # development
 $ nest start
