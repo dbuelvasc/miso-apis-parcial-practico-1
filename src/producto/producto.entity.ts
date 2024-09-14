@@ -1,20 +1,22 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
-import { Tienda } from '../tienda/tienda.entity';
+/* eslint-disable prettier/prettier */
+import { TiendaEntity } from '../tienda/tienda.entity';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable} from 'typeorm';
 
 @Entity()
-export class Producto {
+export class ProductoEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   nombre: string;
 
-  @Column('decimal', { precision: 10, scale: 2 })
+  @Column()
   precio: number;
 
   @Column()
   tipo: string;
 
-  @ManyToMany(() => Tienda, tienda => tienda.productos)
-  tiendas: Tienda[];
+  @ManyToMany(() => TiendaEntity, (tiendaEntity) => tiendaEntity.productos)
+  @JoinTable()
+  tiendas: TiendaEntity[];
 }
