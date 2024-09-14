@@ -10,6 +10,7 @@ import { ProductoService } from './producto/producto.service';
 import { TiendaService } from './tienda/tienda.service';
 import { ProductoTiendaService } from './producto-tienda/producto-tienda.service';
 import { ProductoTiendaModule } from './producto-tienda/producto-tienda.module';
+import { ProductoTiendaService } from './producto-tienda/producto-tienda.service';
 
 const db_host = process.env.DB_HOST || 'localhost';
 const db_port = parseInt(process.env.DB_PORT, 10) || 5432
