@@ -5,12 +5,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductoEntity } from './producto/producto.entity';
 import { ProductoModule } from './producto/producto.module';
 import { TiendaEntity } from './tienda/tienda.entity';
-import { TiendaModule } from './tienda/tienda.module';
 import { ProductoService } from './producto/producto.service';
 import { TiendaService } from './tienda/tienda.service';
 import { ProductoTiendaService } from './producto-tienda/producto-tienda.service';
 import { ProductoTiendaModule } from './producto-tienda/producto-tienda.module';
-import { ProductoTiendaService } from './producto-tienda/producto-tienda.service';
+import { TiendaModule } from './tienda/tienda.module';
+
 
 const db_host = process.env.DB_HOST || 'localhost';
 const db_port = parseInt(process.env.DB_PORT, 10) || 5432
