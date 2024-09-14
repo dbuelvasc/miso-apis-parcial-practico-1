@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { TiendaService } from './tienda.service';
 
-@Module({})
+@Module({
+  providers: [TiendaService]
+})
 export class TiendaModule {}
