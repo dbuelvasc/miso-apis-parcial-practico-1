@@ -2,6 +2,8 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductoEntity } from '../../producto/producto.entity';
 import { TiendaEntity } from '../../tienda/tienda.entity';
+//import { ProductoEntity } from '../../producto/producto.entity';
+//import { TiendaEntity } from '../../tienda/tienda.entity';
 
 export const TypeOrmTestingConfig = () => [
   TypeOrmModule.forRoot({

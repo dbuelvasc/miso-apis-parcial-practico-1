@@ -2,7 +2,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { TypeOrmTestingConfig } from '../shared/utilidades/configuracion-test';
+import { TypeOrmTestingConfig } from '../shared/utilidades/configuration-test';
 import { faker } from '@faker-js/faker';
 import { TiendaService } from './tienda.service';
 import { TiendaEntity } from './tienda.entity';
